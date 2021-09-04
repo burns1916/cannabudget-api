@@ -19,12 +19,6 @@ class FarmsController < ApplicationController
             end
     end
 
-    def destroy
-        farm = Farm.find_by(params[:id])
-        farm.destroy
-        render json: flash[:message] = "Farm Deleted"
-    end
-
     def update
         farm = Farm.find_by(params[:id])
         farm.update(farm_params)
@@ -33,6 +27,13 @@ class FarmsController < ApplicationController
             else
                 render json: farm.errors.full_massages
             end
+    end
+
+    
+    def destroy
+        farm = Farm.find_by(params[:id])
+        farm.delete
+        render json: flash[:message] = "Farm Deleted"
     end
 
     private
