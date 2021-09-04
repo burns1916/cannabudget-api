@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 
     def index
-        @users = User.all
+        users = User.all
         render json: users, only [:id, :username]
     end
 
