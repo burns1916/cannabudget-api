@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  resources :crops
-  resources :farms
-  resources :users
+  resources :expenses
+  resources :incomes
+  resources :crops do
+    resources :expenses
+    resources :incomes
+  end
+  resources :farms do
+    resources :crops
+  end
+  resources :users do
+    resources :farms
+  end
   
   get '/signup' => 'users#new'
   post 'signup' => 'users#create'
