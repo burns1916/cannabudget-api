@@ -79,5 +79,5 @@ test:
   database: postgres
   pool: 5
   username: postgres
-  password: BentleyBurns728
+  password: adminpass
   timeout: 5000
