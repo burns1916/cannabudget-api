@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_09_09_135857) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "crops", force: :cascade do |t|
     t.text "strain_name"
     t.datetime "harvest_date"

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'welcome#index' 
+  get '/signup' => 'users#new'
+  post 'signup' => 'users#create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+ 
+
   resources :expenses
   resources :incomes
   resources :crops do
@@ -11,11 +19,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :farms
   end
-  
-  get '/signup' => 'users#new'
-  post 'signup' => 'users#create'
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
 
 end
