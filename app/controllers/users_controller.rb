@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
     def welcome
-        
+
     end
     
     def index
         users = User.all
-        render json: users, only [:id, :username]
+        render json: users, only: [:id, :username]
     end
 
     def show

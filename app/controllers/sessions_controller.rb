@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
         else render json: {
             error: "No one logged in"
         }
+        end
     end
 
     def get_current_user

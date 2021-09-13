@@ -2,12 +2,12 @@ class FarmsController < ApplicationController
 
     def index
         farms = Farms.all
-        render json: farms, include [:user]
+        render json: farms, include: [:user]
     end
 
     def show
         farm = Farm.find_by{params[:id])
-        render json: farm, include [:user]
+        render json: farm, include: [:user]
     end
 
     def create

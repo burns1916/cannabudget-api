@@ -2,12 +2,12 @@ class CropsController < ApplicationController
 
     def index
         crops = Crops.all
-        render json: crops, include [:farm]
+        render json: crops, include: [:farm]
     end
 
     def show
         crop = Crop.find_by(params[:id])
-        render json: crop, include [:farm]
+        render json: crop, include: [:farm]
     end
 
     def create
