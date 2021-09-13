@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
             render json: current_user
         else
             render json: "Please Login"
+        end
     end
-    
+
 end
