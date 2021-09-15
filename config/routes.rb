@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index' 
+  #root 'welcome#index' 
   post '/signup' => 'users#create'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
