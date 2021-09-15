@@ -4,9 +4,11 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:session][:username])
             if user && user.authenticate(params[:session][:password])
                 sessions[:user_id] = user.id
-                render json: user
+                render json: user, status: 200
             else
-                flash[:message] = "Login information was incorrect"
+                render json: {
+                    error: "Invalid Credentials"
+                  }
             end
     end
 
@@ -24,9 +26,11 @@ class SessionsController < ApplicationController
 
     def get_current_user
         if logged_in?
-            render json: current_user
+            render json: current_user, status: 200
         else
-            render json: "Please Login"
+            render json: {
+                error: "No one logged in"
+              }
         end
     end
 
