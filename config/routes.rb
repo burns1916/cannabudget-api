@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root 'welcome#index' 
-  get '/signup' => 'users#new'
-  post 'signup' => 'users#create'
-  get '/login' => 'sessions#new'
+  post '/signup' => 'users#create'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+  get '/get_current_user' => 'sessions#get_current_user'
  
 
   resources :expenses
