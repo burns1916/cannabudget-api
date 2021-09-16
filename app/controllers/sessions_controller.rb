@@ -2,8 +2,8 @@
 class SessionsController < ApplicationController
 
     def create
-        user = User.find_by(username: params[:session][:username])
-            if user && user.authenticate(params[:session][:password])
+        user = User.find_by(username: params[:username])
+            if user && user.authenticate(params[:password])
                 session[:user_id] = user.id
                 render json: user, status: 200
             else
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
     def get_current_user
         if logged_in?
-            render json: current_user
+            render json: current_user, status 200
         else
             render json: {
                 error: "No one logged in test"
