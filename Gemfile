@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors'
 #gem 'react-rails-hot-loader'
 gem 'pg'
+gem 'pry'
 
 
 group :development, :test do

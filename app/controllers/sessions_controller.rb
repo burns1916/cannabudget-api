@@ -1,3 +1,4 @@
+
 class SessionsController < ApplicationController
 
     def create
@@ -12,26 +13,27 @@ class SessionsController < ApplicationController
             end
     end
 
+    def get_current_user
+        if logged_in?
+            render json: current_user
+        else
+            render json: {
+                error: "No one logged in test"
+              }
+        end
+    end
+
     def destroy
         session.delete :user_id
         if !session[:user_id]
             render json: {
-                notice: "You have logged out."
-            }
-        else render json: {
-            error: "No one logged in"
-        }
-        end
-    end
-
-    def get_current_user
-        if logged_in?
-            render json: current_user, status: 200
-        else
+              notice: "successfully logged out"
+            }, status: :ok
+          else
             render json: {
-                error: "No one logged in"
-              }
-        end
+              error: "Unsuccessful log out"
+            }
+          end
     end
 
 end
