@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
             if user && user.authenticate(params[:password])
                 session[:user_id] = user.id
-                binding.pry
                 render json: current_user, status: 200
             else
                 render json: {
@@ -16,12 +15,11 @@ class SessionsController < ApplicationController
     end
 
     def get_current_user
-      binding.pry
         if logged_in?
             render json: current_user, status: 200
         else
             render json: {
-                error: "No one logged in test"
+                error: "No one logged in"
               }
         end
     end
