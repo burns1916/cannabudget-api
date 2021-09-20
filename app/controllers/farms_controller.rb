@@ -11,11 +11,14 @@ class FarmsController < ApplicationController
     end
 
     def create
-        farm = Farm.new(current_user.farms.build(farm_params))
+        farm = current_user.farms.build(farm_params)
             if farm.save
-                render json: farm
+                render json: farm, status: 200
             else
-                render json: farm.errors.full_messages
+                error_resp = {
+                    error: farm.errors.full_messages.to_sentence
+                }
+                render json: error_resp, status: :unprocessable_entity
             end
     end
 
@@ -39,6 +42,6 @@ class FarmsController < ApplicationController
     private
 
     def farm_params
-        params.permit(:user_id, :name, :location, :total)
+        params.require(:farm).permit(:name, :location, :total)
     end
 end
