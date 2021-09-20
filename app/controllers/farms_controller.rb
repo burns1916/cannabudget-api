@@ -1,7 +1,7 @@
 class FarmsController < ApplicationController
 
     def index
-        farms = Farms.all
+        farms = Farm.all
         render json: farms, include: [:user]
     end
 
@@ -39,6 +39,6 @@ class FarmsController < ApplicationController
     private
 
     def farm_params
-        params.require(:farm).permit(:user_id, :name, :location)
+        params.permit(:user_id, :name, :location, :total)
     end
 end
