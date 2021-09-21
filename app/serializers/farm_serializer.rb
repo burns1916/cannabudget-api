@@ -1,3 +1,4 @@
 class FarmSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :location, :total, :user
+  belongs_to :user
 end
