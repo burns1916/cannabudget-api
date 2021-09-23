@@ -6,12 +6,7 @@ Rails.application.routes.draw do
   get '/get_current_user' => 'sessions#get_current_user'
  
 
-  resources :expenses
-  resources :incomes
-  resources :crops do
-    resources :expenses
-    resources :incomes
-  end
+  resources :crops 
   resources :farms do
     resources :crops
   end

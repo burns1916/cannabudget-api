@@ -1,7 +1,7 @@
 class CropsController < ApplicationController
 
     def index
-        crops = Crops.all
+        crops = Crop.all
         render json: crops, include: [:farm]
     end
 
