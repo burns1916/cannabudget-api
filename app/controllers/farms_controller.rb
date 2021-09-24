@@ -6,7 +6,7 @@ class FarmsController < ApplicationController
     end
 
     def show
-        farm = Farm.find_by(params[:id])
+        farm = Farm.find(params[:id])
         render json: farm, include: [:user]
     end
 
