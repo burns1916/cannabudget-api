@@ -23,7 +23,7 @@ class FarmsController < ApplicationController
     end
 
     def update
-        farm = Farm.find_by(params[:id])
+        farm = Farm.find(params[:id])
         farm.update(farm_params)
             if farm.save
                 render json: farm
@@ -36,7 +36,7 @@ class FarmsController < ApplicationController
     def destroy
         farm = Farm.find(params[:id])
         farm.delete
-        render json: flash[:message] = "Farm Deleted"
+        render json: {notice: "Farm Deleted"}, status: 200
     end
 
     private
