@@ -42,6 +42,6 @@ class FarmsController < ApplicationController
     private
 
     def farm_params
-        params.require(:farm).permit(:name, :location)
+        params.require(:farm).permit(:name, :location, crops_attributes: [:strain_name, :harvest_date, :id])
     end
 end

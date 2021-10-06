@@ -1,7 +1,9 @@
+require 'pry'
 class CropsController < ApplicationController
+    before_action :get_farm
 
     def index
-        crops = Crop.all
+        crops = @farm.crops
         render json: crops, include: [:farm]
     end
 
@@ -11,11 +13,15 @@ class CropsController < ApplicationController
     end
 
     def create
-        crop = Crop.new(crop_params)
+        crop = @farm.crops.build(crop_params)
+        binding.pry
             if crop.save
-                render json: crop
+                render json: crop, status: 200
             else
-                render json: crop.errors.full_messages
+                error_resp = {
+                    error: crop.errors.full_messages.to_sentence
+                  }
+                  render json: error_resp, status: :unprocessable_entity
             end
     end
 
@@ -38,7 +44,11 @@ class CropsController < ApplicationController
     private
 
     def crop_params
-        params.require(:crop).permit(:farm_id, :strain_name, :harvest_date)
+        params.require(:crop).permit(:strain_name, :harvest_date)
+    end
+
+    def get_farm
+        @farm = Farm.find(params[:farm_id])
     end
 
 end
