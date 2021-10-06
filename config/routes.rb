@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transactions
   root 'welcome#index' 
   post '/signup' => 'users#create'
   post '/login' => 'sessions#create'

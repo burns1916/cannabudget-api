@@ -10,25 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_023743) do
+ActiveRecord::Schema.define(version: 2021_10_06_223730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "crops", force: :cascade do |t|
     t.text "strain_name"
-    t.datetime "harvest_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "farm_id"
-  end
-
-  create_table "expenses", force: :cascade do |t|
-    t.text "name"
-    t.integer "amount"
-    t.integer "crop_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "farms", force: :cascade do |t|
@@ -39,10 +30,9 @@ ActiveRecord::Schema.define(version: 2021_09_21_023743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "incomes", force: :cascade do |t|
-    t.text "name"
-    t.integer "amount"
-    t.integer "crop_id"
+  create_table "transactions", force: :cascade do |t|
+    t.integer "income"
+    t.integer "expense"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
