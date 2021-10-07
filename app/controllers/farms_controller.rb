@@ -5,6 +5,10 @@ class FarmsController < ApplicationController
         render json: farms, include: [:user]
     end
 
+    def new
+        
+    end
+
     def show
         farm = Farm.find(params[:id])
         render json: farm, include: [:user]
@@ -42,6 +46,6 @@ class FarmsController < ApplicationController
     private
 
     def farm_params
-        params.require(:farm).permit(:name, :location, crops_attributes: [:strain_name, :harvest_date, :id])
+        params.require(:farm).permit(:name, :location, crops_attributes: [:strain_name, :id])
     end
 end
