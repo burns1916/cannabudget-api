@@ -35,7 +35,7 @@ class CropsController < ApplicationController
     end
 
     def destroy
-        crop = Crop.find_by(params[:id])
+        crop = Crop.find(params[:id])
         crop.delete
         render json: flash[:message] = "Crop Deleted"
     end
