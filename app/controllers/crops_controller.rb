@@ -7,7 +7,7 @@ class CropsController < ApplicationController
     end
 
     def show
-        crop = Crop.find_by(params[:id])
+        crop = Crop.find(params[:id])
         render json: crop, include: [:farm]
     end
 
