@@ -13,7 +13,6 @@ class CropsController < ApplicationController
 
     def create
         crop = Crop.new(crop_params)
-        binding.pry
             if crop.save
                 render json: crop, status: 200
             else
@@ -43,7 +42,7 @@ class CropsController < ApplicationController
     private
 
     def crop_params
-        params.require(:crop).permit(:strain_name, :farm_id, transaction_attributes: [:income, :expense, :id])
+        params.require(:crop).permit(:strain_name, :farm_id, income_attributes: [:name, :amount, :id], expense_attributes: [:name, :amount, :id])
     end
 
 end

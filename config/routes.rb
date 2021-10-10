@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :expenses
+  resources :incomes
   resources :transactions
   root 'welcome#index' 
   post '/signup' => 'users#create'
