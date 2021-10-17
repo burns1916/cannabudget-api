@@ -25,7 +25,7 @@ class IncomesController < ApplicationController
     def destroy
         income = Income.find(params[:id])
         income.delete
-        render json: flash[:message] = "Income Deleted"
+        render json: {notice: "Income Deleted"}, status: 200
     end
 
     private
