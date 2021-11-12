@@ -24,18 +24,7 @@ class FarmsController < ApplicationController
                 }
                 render json: error_resp, status: :unprocessable_entity
             end
-    end
-
-    def update
-        farm = Farm.find(params[:id])
-        farm.update(farm_params)
-            if farm.save
-                render json: farm
-            else
-                render json: farm.errors.full_massages
-            end
-    end
-
+        end
     
     def destroy
         farm = Farm.find(params[:id])

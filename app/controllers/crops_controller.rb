@@ -23,16 +23,6 @@ class CropsController < ApplicationController
             end
     end
 
-    def update
-        crop = Crop.find_by(params[:id])
-        crop.update(crop_params)
-            if crop.save
-                render json: crop
-            else
-                render json: crop.errors.full_messages
-            end
-    end
-
     def destroy
         crop = Crop.find(params[:id])
         crop.delete
