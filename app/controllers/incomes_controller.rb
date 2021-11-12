@@ -24,7 +24,7 @@ class IncomesController < ApplicationController
 
     def destroy
         income = Income.find(params[:id])
-        income.delete
+        income.destroy
         render json: {notice: "Income Deleted"}, status: 200
     end
 

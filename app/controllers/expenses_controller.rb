@@ -24,7 +24,7 @@ class ExpensesController < ApplicationController
 
     def destroy
         expense = Expense.find(params[:id])
-        expense.delete
+        expense.destroy
         render json: {notice: "Expense Deleted"}, status: 200
     end
 

@@ -28,7 +28,7 @@ class FarmsController < ApplicationController
     
     def destroy
         farm = Farm.find(params[:id])
-        farm.delete
+        farm.destroy
         render json: {notice: "Farm Deleted"}, status: 200
     end
 
